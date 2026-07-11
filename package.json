@@ -7,7 +7,7 @@
     },
     "displayName": "Git Watch Vscode Rename (New)",
     "description": "Automatically run 'git mv' command, when renaming files/folders in VS Code, just for occasions where only file/folder name case was changed.",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "engines": {
         "vscode": "^1.100.0"
     },

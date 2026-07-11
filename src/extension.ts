@@ -1,9 +1,9 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
-import {execa} from 'execa'
+import { execa } from 'execa'
 import fs from 'node:fs/promises'
-import * as vscode from 'vscode'
 import path from 'node:path'
+import * as vscode from 'vscode'
 
 export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(
@@ -20,7 +20,7 @@ export function activate(context: vscode.ExtensionContext) {
 
                     // Get git project root
                     const {stdout: gitProjectRoot} = await execa('git', ['rev-parse', '--show-toplevel'], {
-                        cwd: newPath,
+                        cwd: path.dirname(newPath),
                         shell: vscode.env.shell,
                     })
 
@@ -51,7 +51,7 @@ export function activate(context: vscode.ExtensionContext) {
 
                     const {stderr} = await execa(command, {
                         cwd: gitProjectRoot,
-                        shell: true, // Required for command chaining with &&
+                        shell: true
                     })
 
                     if (stderr) {
